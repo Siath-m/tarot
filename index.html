@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App de Tarô</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #1a1a2e;
+      color: #ffffff;
+      padding: 20px;
+    }
+    .cartas-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .carta {
+      background-color: #16213e;
+      border: 2px solid #e94560;
+      border-radius: 8px;
+      padding: 15px;
+      width: 140px;
+      min-height: 180px;
+    }
+    .invertida {
+      color: #ff9999;
+    }
+    button {
+      background-color: #e94560;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0f3460;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meu App de Tarô</h1>
+  <button onclick="tirarCartas(3)">Tirar 3 Cartas</button>
+
+  <div id="resultado" class="cartas-container"></div>
+
+  <script>
+    // Lista inicial de cartas para o protótipo
+    const baralho = [
+      { nome: "O Louco", descricao: "Novos começos, inocência, fé no futuro." },
+      { nome: "O Mago", descricao: "Ação, poder de manifestação, habilidade." },
+      { nome: "A Sacerdotisa", descricao: "Intuição, mistério, conhecimento interior." },
+      { nome: "A Imperatriz", descricao: "Abundância, fertilidade, criação." },
+      { nome: "O Imperador", descricao: "Estrutura, autoridade, estabilidade." }
+    ];
+
+    function tirarCartas(quantidade) {
+      // Cria uma cópia do baralho para não alterar o original
+      let baralhoEmbaralhado = [...baralho].sort(() => Math.random() - 0.5);
+      
+      const container = document.getElementById("resultado");
+      container.innerHTML = ""; // Limpa a tela antes de mostrar novas cartas
+
+      for (let i = 0; i < quantidade; i++) {
+        const carta = baralhoEmbaralhado[i];
+        const isInvertida = Math.random() < 0.5; // 50% de chance de vir invertida
+
+        const divCarta = document.createElement("div");
+        divCarta.className = "carta";
+        
+        divCarta.innerHTML = `
+          <h3>${carta.nome}</h3>
+          <p class="${isInvertida ? 'invertida' : ''}">
+            <strong>Posição:</strong> ${isInvertida ? 'Invertida 🙃' : 'Normal ⬆️'}
+          </p>
+          <p><small>${carta.descricao}</small></p>
+        `;
+
+        container.appendChild(divCarta);
+      }
+    }
+  </script>
+
+</body>
+</html>

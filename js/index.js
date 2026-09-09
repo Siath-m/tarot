@@ -1,10 +1,30 @@
 // Lista inicial de cartas para o protótipo
 const baralho = [
-    { nome: "O Louco", descricao: "Novos começos, inocência, fé no futuro." },
-    { nome: "O Mago", descricao: "Ação, poder de manifestação, habilidade." },
-    { nome: "A Sacerdotisa", descricao: "Intuição, mistério, conhecimento interior." },
-    { nome: "A Imperatriz", descricao: "Abundância, fertilidade, criação." },
-    { nome: "O Imperador", descricao: "Estrutura, autoridade, estabilidade." }
+    {
+        nome: "O Louco",
+        descricao: "Novos começos, inocência, fé no futuro.",
+        imagem: "imagens/o-louco.jfif"
+    },
+    {
+        nome: "O Mago",
+        descricao: "Ação, poder de manifestação, habilidade.",
+        imagem: "imagens/o-mago.jfif"
+    },
+    {
+        nome: "A Sacerdotisa",
+        descricao: "Intuição, mistério, conhecimento interior.",
+        imagem: "imagens/a-sacerdotisa.jfif"
+    },
+    {
+        nome: "A Imperatriz",
+        descricao: "Abundância, fertilidade, criação.",
+        imagem: "imagens/a-imperatriz.jfif"
+    },
+    {
+        nome: "O Imperador",
+        descricao: "Estrutura, autoridade, estabilidade.",
+        imagem: "imagens/o-imperador.jfif"
+    }
 ];
 
 function tirarCartas(quantidade) {
@@ -22,11 +42,16 @@ function tirarCartas(quantidade) {
         divCarta.className = "carta";
 
         divCarta.innerHTML = `
-          <h3>${carta.nome}</h3>
-          <p class="${isInvertida ? 'invertida' : ''}">
-            <strong>Posição:</strong> ${isInvertida ? 'Invertida 🙃' : 'Normal ⬆️'}
-          </p>
-          <p><small>${carta.descricao}</small></p>
+            <img 
+                src="${carta.imagem}" 
+                alt="${carta.nome}" 
+                class="${isInvertida ? 'imagem-invertida' : ''}"
+        >
+        <h3>${carta.nome}</h3>
+        <p class="${isInvertida ? 'invertida' : ''}">
+        <strong>Posição:</strong> ${isInvertida ? 'Invertida 🙃' : 'Normal ⬆️'}
+        </p>
+        <p><small>${carta.descricao}</small></p>
         `;
 
         container.appendChild(divCarta);

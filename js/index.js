@@ -1,0 +1,34 @@
+// Lista inicial de cartas para o protótipo
+const baralho = [
+    { nome: "O Louco", descricao: "Novos começos, inocência, fé no futuro." },
+    { nome: "O Mago", descricao: "Ação, poder de manifestação, habilidade." },
+    { nome: "A Sacerdotisa", descricao: "Intuição, mistério, conhecimento interior." },
+    { nome: "A Imperatriz", descricao: "Abundância, fertilidade, criação." },
+    { nome: "O Imperador", descricao: "Estrutura, autoridade, estabilidade." }
+];
+
+function tirarCartas(quantidade) {
+    // Cria uma cópia do baralho para não alterar o original
+    let baralhoEmbaralhado = [...baralho].sort(() => Math.random() - 0.5);
+
+    const container = document.getElementById("resultado");
+    container.innerHTML = ""; // Limpa a tela antes de mostrar novas cartas
+
+    for (let i = 0; i < quantidade; i++) {
+        const carta = baralhoEmbaralhado[i];
+        const isInvertida = Math.random() < 0.5; // 50% de chance de vir invertida
+
+        const divCarta = document.createElement("div");
+        divCarta.className = "carta";
+
+        divCarta.innerHTML = `
+          <h3>${carta.nome}</h3>
+          <p class="${isInvertida ? 'invertida' : ''}">
+            <strong>Posição:</strong> ${isInvertida ? 'Invertida 🙃' : 'Normal ⬆️'}
+          </p>
+          <p><small>${carta.descricao}</small></p>
+        `;
+
+        container.appendChild(divCarta);
+    }
+}

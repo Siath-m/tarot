@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.cartas-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.carta {
+    background-color: #16213e;
+    border: 2px solid #e94560;
+    border-radius: 8px;
+    padding: 15px;
+    width: 140px;
+    min-height: 180px;
+}
+
+.invertida {
+    color: #ff9999;
+}
+
+button {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0f3460;
+}
